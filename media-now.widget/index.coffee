@@ -1,5 +1,5 @@
 
-# A widget to describe what's playing in either iTunes or Spotify.
+# A widget that shows what's currently playing in either iTunes or Spotify.
 
 command: "osascript 'media-now.widget/Get Current Track.scpt'"
 
@@ -12,10 +12,10 @@ style: """
   scale = 1
   bg-blur = 10px
 
-  bottom: 18pt * scale
+  bottom: (27pt + 6) * scale
   left: 6pt * scale
   width: 325px * scale
-  height: 120px * scale
+  height: 100px * scale
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
@@ -44,9 +44,6 @@ style: """
 
   .album
     color: white05
-
-  .none
-    display: none
   """
 
 render: -> """
@@ -64,13 +61,13 @@ update: (output, domEl) ->
   # Initialize our HTML.
   medianowHTML = ''
 
-  # Loop through each of the pieces.
-  # if values[0] != 'Nothing playing'
-    # medianowHTML = "<div class='None'>hide dis shit</div>"
-  # else
+  # Make it disappear if nothing is playing
+  if values[0] == 'Nothing playing'
+    medianowHTML = ""
+  else
 
     # Create the DIVs for each piece of data.
-  medianowHTML = "
+    medianowHTML = "
       <canvas class='bg-slice'></canvas>
       <div class='wrapper'>
         <div class='artist'>" + values[0] + "</div>
@@ -82,5 +79,5 @@ update: (output, domEl) ->
   # Set the HTML of our main DIV.
   div.html(medianowHTML)
 
-  ###afterRender: (domEl) ->
-  uebersicht.makeBgSlice(el) for el in $(domEl).find '.bg-slice'###
+  afterRender: (domEl) ->
+  uebersicht.makeBgSlice(el) for el in $(domEl).find '.bg-slice'
