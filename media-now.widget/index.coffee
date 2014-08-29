@@ -3,24 +3,27 @@
 
 command: "osascript 'media-now.widget/Get Current Track.scpt'"
 
-refreshFrequency: 1000
+refreshFrequency: 1000000
 
 style: """
 
   white05 = rgba(white,0.5)
   white01 = rgba(white,0.2)
   scale = 1
-  bg-blur = 10px
+  bg-blur = 20px
 
   bottom: (27pt + 6) * scale
   left: 6pt * scale
   width: 325px * scale
   height: 100px * scale
-  white-space: nowrap
   overflow: hidden
+  white-space: nowrap
   text-overflow: ellipsis
+  box-sizing: border-box
 
   .wrapper
+    box-sizing: border-box
+    position: relative
     font-family: HelveticaNeue
     text-align:left
     font-size:8pt * scale
@@ -30,10 +33,11 @@ style: """
     background: white01
     border:1px * scale solid white05
     padding: 6px 12px * scale
+    z-index: 2
 
   .bg-slice
     position: absolute
-    bottom: -(bg-blur)
+    top: -(bg-blur)
     left: -(bg-blur)
     width: 100% + 2*bg-blur
     height: 100% + 2*bg-blur
@@ -68,13 +72,13 @@ update: (output, domEl) ->
 
     # Create the DIVs for each piece of data.
     medianowHTML = "
-      <canvas class='bg-slice'></canvas>
       <div class='wrapper'>
         <div class='artist'>" + values[0] + "</div>
         <div class='song'>" + values[1] + "</div>
         <div class='album'>" + values[2] + "</div>
         <div class='rating'>" + values[3] + "</div>
-      </div>"
+      </div>
+      <canvas class='bg-slice'></canvas>"
 
   # Set the HTML of our main DIV.
   div.html(medianowHTML)
