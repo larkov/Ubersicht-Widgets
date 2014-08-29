@@ -3,14 +3,14 @@
 
 command: "osascript 'media-now.widget/Get Current Track.scpt'"
 
-refreshFrequency: 1000000
+refreshFrequency: 1000
 
 style: """
 
   white05 = rgba(white,0.5)
   white01 = rgba(white,0.2)
   scale = 1
-  bg-blur = 20px
+  bg-blur = 10px
 
   bottom: (27pt + 6) * scale
   left: 6pt * scale
@@ -19,10 +19,10 @@ style: """
   overflow: hidden
   white-space: nowrap
   text-overflow: ellipsis
-  box-sizing: border-box
+  // box-sizing: border-box
 
   .wrapper
-    box-sizing: border-box
+    // box-sizing: border-box
     position: relative
     font-family: HelveticaNeue
     text-align:left
@@ -83,5 +83,5 @@ update: (output, domEl) ->
   # Set the HTML of our main DIV.
   div.html(medianowHTML)
 
-  afterRender: (domEl) ->
-  uebersicht.makeBgSlice(el) for el in $(domEl).find '.bg-slice'
+  # afterRender: (domEl) ->
+  # uebersicht.makeBgSlice(el) for el in $(domEl).find '.bg-slice'
