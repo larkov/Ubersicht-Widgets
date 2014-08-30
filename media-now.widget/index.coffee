@@ -8,11 +8,11 @@ refreshFrequency: 1000
 style: """
 
   white05 = rgba(white,0.5)
-  white01 = rgba(white,0.2)
+  white01 = rgba(white,0.1)
   scale = 1
   bg-blur = 20px
 
-  bottom: (39pt + 6) * scale
+  bottom: (39pt + 8) * scale
   left: 6pt * scale
   width: 325px * scale
   overflow: hidden
@@ -23,8 +23,9 @@ style: """
     position: relative
     font-family: HelveticaNeue
     text-align:left
+    text-shadow: 0 1px 1px * scale rgba(black,0.3)
     font-size:8pt * scale
-    line-height: @font-size + 8% * @font-size
+    line-height: 20% * @font-size
     -webkit-font-smoothing: antialiased
     color: white
     background: white01
@@ -32,12 +33,12 @@ style: """
     padding: 6px 12px * scale
     z-index: 2
 
-  .bg-slice
+  .media-bg-slice
     position: absolute
-    top: -(bg-blur)
-    left: -(bg-blur)
-    width: 100% + 2*bg-blur
-    height: 100% + 2*bg-blur
+    top: -2*(bg-blur)
+    left: -2*(bg-blur)
+    width: 100% + 6*bg-blur
+    height: 100% + 6*bg-blur
     -webkit-filter: blur(bg-blur)
 
   .song
@@ -69,7 +70,7 @@ update: (output, domEl) ->
 
     # Create the DIVs for each piece of data.
     medianowHTML = "
-      <canvas class='bg-slice'></canvas>
+      <canvas class='media-bg-slice'></canvas>
       <div class='wrapper'>
         <div class='artist'>" + values[0] + "</div>
         <div class='song'>" + values[1] + "</div>
@@ -81,4 +82,4 @@ update: (output, domEl) ->
   div.html(medianowHTML)
 
   afterRender: (domEl) ->
-  uebersicht.makeBgSlice(el) for el in $(domEl).find '.bg-slice'
+  uebersicht.makeBgSlice(el) for el in $(domEl).find '.media-bg-slice'
