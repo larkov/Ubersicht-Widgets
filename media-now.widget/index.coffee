@@ -17,7 +17,6 @@ style: """
   width: 325px * scale
   overflow: hidden
   white-space: nowrap
-  text-overflow: ellipsis
 
   .wrapper
     position: relative
@@ -25,13 +24,12 @@ style: """
     text-align:left
     text-shadow: 0 1px 1px * scale rgba(black,0.3)
     font-size:8pt * scale
-    line-height: 20% * @font-size
+    line-height: (20% / scale) * @font-size
     -webkit-font-smoothing: antialiased
     color: white
     background: white01
     border:1px * scale solid white05
     padding: 6px 12px * scale
-    z-index: 2
 
   .media-bg-slice
     position: absolute
@@ -40,6 +38,10 @@ style: """
     width: 100% + 6*bg-blur
     height: 100% + 6*bg-blur
     -webkit-filter: blur(bg-blur)
+
+  .artist, .song, .album
+    overflow: hidden
+    text-overflow: ellipsis
 
   .song
     font-weight: 700
