@@ -1,6 +1,8 @@
 
 # A widget that shows what's currently playing in either iTunes or Spotify.
-
+# Assembled by Piotr Gajos
+# https://github.com/Pe8er/Ubersicht-Widgets
+# I don't know how to write code, so I obviously pulled pieces from all over the place, particularly from Chris Johnson's World Clock widget. Also big thanks to Josh "Baby Boi" Rutherford.
 
 command: "osascript 'media-now.widget/Get Current Track.scpt'"
 
