@@ -38,15 +38,13 @@ update: (output, domEl) ->
   # Set the HTML of our main DIV.
   div.html(timeHTML)
 
-
-  # Change the location of the border, depending on whether or not the Wrapper DIVs are the same size as the overall DIV (i.e. the display is vertical).
-
 # CSS Style
 style: """
 
   white05 = rgba(white,0.5)
   white01 = rgba(white,0.2)
   scale = 1
+  bg-blur = 20px
 
   bottom: 6pt * scale
   left: 6pt * scale

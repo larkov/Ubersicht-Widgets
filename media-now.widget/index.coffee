@@ -10,24 +10,21 @@ style: """
   white05 = rgba(white,0.5)
   white01 = rgba(white,0.2)
   scale = 1
-  bg-blur = 10px
+  bg-blur = 20px
 
-  bottom: (27pt + 6) * scale
+  bottom: (39pt + 6) * scale
   left: 6pt * scale
   width: 325px * scale
-  height: 100px * scale
   overflow: hidden
   white-space: nowrap
   text-overflow: ellipsis
-  // box-sizing: border-box
 
   .wrapper
-    // box-sizing: border-box
     position: relative
     font-family: HelveticaNeue
     text-align:left
     font-size:8pt * scale
-    line-height: 1.6
+    line-height: @font-size + 8% * @font-size
     -webkit-font-smoothing: antialiased
     color: white
     background: white01
@@ -72,16 +69,16 @@ update: (output, domEl) ->
 
     # Create the DIVs for each piece of data.
     medianowHTML = "
+      <canvas class='bg-slice'></canvas>
       <div class='wrapper'>
         <div class='artist'>" + values[0] + "</div>
         <div class='song'>" + values[1] + "</div>
         <div class='album'>" + values[2] + "</div>
         <div class='rating'>" + values[3] + "</div>
-      </div>
-      <canvas class='bg-slice'></canvas>"
+      </div>"
 
   # Set the HTML of our main DIV.
   div.html(medianowHTML)
 
-  # afterRender: (domEl) ->
-  # uebersicht.makeBgSlice(el) for el in $(domEl).find '.bg-slice'
+  afterRender: (domEl) ->
+  uebersicht.makeBgSlice(el) for el in $(domEl).find '.bg-slice'
