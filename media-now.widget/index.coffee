@@ -1,5 +1,6 @@
 
 # A widget that shows what's currently playing in either iTunes or Spotify.
+# Code stolen from: dkfjkdjf
 
 command: "osascript 'media-now.widget/Get Current Track.scpt'"
 
