@@ -1,6 +1,7 @@
 Ubersicht-Widgets
 =================
 
-Because [Ubersicht](http://tracesof.net/uebersicht/) is fantabulous!
+![I have no idea what I'm doing](http://imgur.com/zSmNq6c.jpg)
 
-Official widget repository is [here](https://github.com/felixhageloh/uebersicht-widgets).
+- [Übersicht on Github](https://github.com/felixhageloh/uebersicht)
+- [Official widget repository](https://github.com/felixhageloh/uebersicht-widgets)
