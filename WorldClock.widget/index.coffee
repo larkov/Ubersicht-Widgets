@@ -20,7 +20,7 @@ style: """
 
   .wrapper
     position: relative
-    font-family: HelveticaNeue
+    font-family: "Helvetica Neue"
     text-align:center
     font-size:8pt * scale
     line-height: 20% * @font-size

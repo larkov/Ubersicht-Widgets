@@ -21,7 +21,6 @@ style: """
   overflow: hidden
   white-space: nowrap
   opacity: 0
-  //-webkit-transition: opacity 1s ease-in
 
   .wrapper
     position: relative
@@ -63,9 +62,6 @@ style: """
 
   .album, .by
     color: white06
-
-  .loaded
-    opacity: 1
   """
 
 render: -> """
