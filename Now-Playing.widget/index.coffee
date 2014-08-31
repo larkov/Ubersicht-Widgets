@@ -10,28 +10,38 @@ refreshFrequency: 1000
 
 style: """
 
-  white05 = rgba(white,0.6)
-  white01 = rgba(black,0.2)
+  white06 = rgba(white,0.6)
+  black02 = rgba(black,0.2)
   scale = 1
   bg-blur = 20px
 
-  bottom: (39pt + 8) * scale
+  bottom: 49pt * scale
   left: 6pt * scale
   width: 325px * scale
   overflow: hidden
   white-space: nowrap
+  opacity: 0
+  //-webkit-transition: opacity 1s ease-in
 
   .wrapper
     position: relative
-    font-family: HelveticaNeue
-    text-align:left
-    font-size:8pt * scale
+    font-family: "Helvetica Neue"
+    text-align: left
+    font-size: 8pt * scale
     line-height: (20% / scale) * @font-size
     -webkit-font-smoothing: antialiased
     color: white
-    background: white01
-    border:1px * scale solid white05
+    background: black02
+    border: 1px * scale solid white06
     padding: 6px 12px * scale
+
+  .progress
+    width: @width
+    height: 2px * scale
+    background: white06
+    position: absolute
+    bottom: 0
+    left: 0
 
   .media-bg-slice
     position: absolute
@@ -41,15 +51,21 @@ style: """
     height: 100% + 6*bg-blur
     -webkit-filter: blur(bg-blur)
 
-  .artist, .song, .album
+  .wrapper, .album
     overflow: hidden
     text-overflow: ellipsis
 
   .song
     font-weight: 700
 
-  .album
-    color: white05
+  .song, .artist, .by
+    display: inline
+
+  .album, .by
+    color: white06
+
+  .loaded
+    opacity: 1
   """
 
 render: -> """
@@ -62,28 +78,42 @@ update: (output, domEl) ->
   div = $(domEl)
 
   # Get our pieces
-  values=output.split(" ~ ")
+  values = output.split(" ~ ")
 
   # Initialize our HTML.
   medianowHTML = ''
 
+  # Progress bar things
+  tDuration = values[4]
+  tPosition = values[5]
+  tWidth = $(domEl).width();
+  tCurrent = (tPosition / tDuration) * tWidth
+
   # Make it disappear if nothing is playing
-  if values[0] == 'Nothing playing'
-    medianowHTML = ""
-  else
+  if values[0] != 'Nothing playing'
 
     # Create the DIVs for each piece of data.
+    $(domEl).animate({ opacity: 1 }, 500)
     medianowHTML = "
       <canvas class='media-bg-slice'></canvas>
       <div class='wrapper'>
-        <div class='artist'>" + values[0] + "</div>
         <div class='song'>" + values[1] + "</div>
+        <div class='by'> by </div>
+        <div class='artist'>" + values[0] + "</div>
         <div class='album'>" + values[2] + "</div>
         <div class='rating'>" + values[3] + "</div>
+        <div class='progress'></div>
       </div>"
+  else
+    $(domEl).animate({ opacity: 0 }, 500)
 
   # Set the HTML of our main DIV.
   div.html(medianowHTML)
+
+  if tDuration == 'NA'
+    $(domEl).find('.progress').css width: "0"
+  else
+    $(domEl).find('.progress').css width: tCurrent
 
   afterRender: (domEl) ->
   uebersicht.makeBgSlice(el) for el in $(domEl).find '.media-bg-slice'
