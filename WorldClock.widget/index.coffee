@@ -7,8 +7,8 @@ refreshFrequency: 1000
 # CSS Style
 style: """
 
-  white05 = rgba(white,0.5)
-  white01 = rgba(white,0.1)
+  white05 = rgba(white,0.6)
+  white01 = rgba(black,0.2)
   scale = 1
   bg-blur = 20px
 
@@ -24,7 +24,6 @@ style: """
     text-align:center
     font-size:8pt * scale
     line-height: 20% * @font-size
-    text-shadow: 0 1px 1px * scale rgba(black,0.3)
     -webkit-font-smoothing: antialiased
     background:white01
     border:1px * scale solid white05
