@@ -10,8 +10,8 @@ refreshFrequency: 1000
 
 style: """
 
-  white05 = rgba(white,0.5)
-  white01 = rgba(white,0.1)
+  white05 = rgba(white,0.6)
+  white01 = rgba(black,0.2)
   scale = 1
   bg-blur = 20px
 
@@ -25,7 +25,6 @@ style: """
     position: relative
     font-family: HelveticaNeue
     text-align:left
-    text-shadow: 0 1px 1px * scale rgba(black,0.3)
     font-size:8pt * scale
     line-height: (20% / scale) * @font-size
     -webkit-font-smoothing: antialiased
