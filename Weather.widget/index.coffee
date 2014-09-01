@@ -1,8 +1,16 @@
+# A widget that shows current weather.
+# Assembled by Piotr Gajos
+# https://github.com/Pe8er/Ubersicht-Widgets
+# I don't know how to write code, so I obviously pulled pieces from all over the place, particularly from Chris Johnson's World Clock widget. Also big thanks to Josh "Baby Boi" Rutherford.
+
+# jq required for use:  http://stedolan.github.io/jq/
+# Optionally just use brew:  'brew install jq'
+
 # Execute the shell command.
 command: "Weather.widget/Weather.sh"
 
 # Set the refresh frequency (milliseconds).
-refreshFrequency: 100000
+refreshFrequency: 600000
 
 # CSS Style
 style: """
@@ -17,7 +25,6 @@ style: """
   width: 80px * scale
   overflow: hidden
   white-space: nowrap
-  opacity: 0
 
   .wrapper
     position: relative
@@ -47,7 +54,8 @@ style: """
     font-weight: 700
     font-size: 13pt * scale
     line-height: @font-size
-    margin-left: 6px * scale
+    margin-left: 8px * scale
+    overflow: visible
 
   .cond
     color:white06
@@ -77,18 +85,14 @@ update: (output, domEl) ->
   temp = values[2]
 
   # Make it disappear if nothing is playing
-  if values[0] != ''
 
     # Create the DIVs for each piece of data.
-    $(domEl).animate({ opacity: 1 }, 500)
-    weatherHTML = "
-      <canvas class='weather-bg-slice'></canvas>
-      <div class='wrapper'>
-        <div class='temp'>" + temp + "</div>
-        <div class='cond'>" + cond + "</div>
-      </div>"
-  else
-    $(domEl).animate({ opacity: 0 }, 500)
+  weatherHTML = "
+    <canvas class='weather-bg-slice'></canvas>
+    <div class='wrapper'>
+      <div class='temp'>" + temp + "</div>
+      <div class='cond'>" + cond + "</div>
+    </div>"
 
   # Set the HTML of our main DIV.
   div.html(weatherHTML)
