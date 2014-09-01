@@ -15,8 +15,8 @@ style: """
   scale = 1
   bg-blur = 20px
 
-  bottom: (58px + 8) * scale
-  left: 8px * scale
+  bottom: (60px + 8) * scale
+  left: (88px + 8) * scale
   width: 325px * scale
   overflow: hidden
   white-space: nowrap

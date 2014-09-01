@@ -10,7 +10,7 @@
 command: "Weather.widget/Weather.sh"
 
 # Set the refresh frequency (milliseconds).
-refreshFrequency: 600000
+refreshFrequency: 60000
 
 # CSS Style
 style: """
@@ -20,8 +20,8 @@ style: """
   scale = 1
   bg-blur = 20px
 
-  bottom: (58px + 8) * scale
-  left: (332px + 8) * scale
+  bottom: (60px + 8) * scale
+  left: 8px * scale
   width: 80px * scale
   overflow: hidden
   white-space: nowrap

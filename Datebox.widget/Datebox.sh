@@ -1,3 +1,3 @@
-echo "`export TZ='US/Pacific';date +'%d';
+echo "`date +'%d';
 date +'%B';
 unset TZ`"

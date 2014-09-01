@@ -13,7 +13,7 @@ style: """
   bg-blur = 20px
 
   bottom: 8px * scale
-  left: 8px * scale
+  left: (88px + 8) * scale
   overflow: hidden
   white-space: nowrap
   text-overflow: ellipsis
