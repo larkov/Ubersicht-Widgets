@@ -1,16 +1,14 @@
-# A widget that shows current weather.
+# A widget that shows current date.
 # Assembled by Piotr Gajos
 # https://github.com/Pe8er/Ubersicht-Widgets
 # I don't know how to write code, so I obviously pulled pieces from all over the place, particularly from Chris Johnson's World Clock widget. Also big thanks to Josh "Baby Boi" Rutherford.
 
-# jq required for use:  http://stedolan.github.io/jq/
-# Optionally just use brew:  'brew install jq'
-
 # Execute the shell command.
-command: "Weather.widget/Weather.sh"
+command: "Datebox.widget/Datebox.sh"
 
 # Set the refresh frequency (milliseconds).
-refreshFrequency: 600000
+# refreshFrequency: 3600000
+refreshFrequency: 1000
 
 # CSS Style
 style: """
@@ -20,7 +18,7 @@ style: """
   scale = 1
   bg-blur = 20px
 
-  bottom: (58px + 8) * scale
+  bottom: 8px * scale
   left: (332px + 8) * scale
   width: 80px * scale
   overflow: hidden
@@ -38,7 +36,7 @@ style: """
     border: 1px * scale solid white06
     height: 50px * scale
 
-  .weather-bg-slice
+  .date-bg-slice
     position: absolute
     top: -2*(bg-blur)
     left: -2*(bg-blur)
@@ -46,19 +44,18 @@ style: """
     height: 100% + 6*bg-blur
     -webkit-filter: blur(bg-blur)
 
-  .temp, .cond
+  .day, .month
     overflow: hidden
     text-overflow: ellipsis
 
-  .temp
+  .day
     font-weight: 700
-    font-size: 18pt * scale
+    font-size: 16pt * scale
     line-height: @font-size
-    margin-left: 8px * scale
     overflow: visible
     padding-top: 6px * scale
 
-  .cond
+  .month
     color:white06
 
   """
@@ -78,25 +75,24 @@ update: (output, domEl) ->
   values = output.split("\n")
 
   # Initialize our HTML.
-  weatherHTML = ''
+  dateHTML = ''
 
   # Making my life easy
-  loc = values[0]
-  cond = values[1]
-  temp = values[2]
+  day = values[0]
+  month = values[1]
 
   # Make it disappear if nothing is playing
 
     # Create the DIVs for each piece of data.
-  weatherHTML = "
-    <canvas class='weather-bg-slice'></canvas>
+  dateHTML = "
+    <canvas class='date-bg-slice'></canvas>
     <div class='wrapper'>
-      <div class='temp'>" + temp + "</div>
-      <div class='cond'>" + cond + "</div>
+      <div class='day'>" + day + "</div>
+      <div class='month'>" + month + "</div>
     </div>"
 
   # Set the HTML of our main DIV.
-  div.html(weatherHTML)
+  div.html(dateHTML)
 
   afterRender: (domEl) ->
-  uebersicht.makeBgSlice(el) for el in $(domEl).find '.weather-bg-slice'
+  uebersicht.makeBgSlice(el) for el in $(domEl).find '.date-bg-slice'

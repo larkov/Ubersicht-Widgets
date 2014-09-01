@@ -12,8 +12,8 @@ style: """
   scale = 1
   bg-blur = 20px
 
-  bottom: 6pt * scale
-  left: 6pt * scale
+  bottom: 8px * scale
+  left: 8px * scale
   overflow: hidden
   white-space: nowrap
   text-overflow: ellipsis
@@ -21,13 +21,13 @@ style: """
   .wrapper
     position: relative
     font-family: "Helvetica Neue"
-    text-align:center
-    font-size:8pt * scale
-    line-height: 20% * @font-size
+    text-align: center
+    font-size: 8pt * scale
+    line-height: 12pt * scale
     -webkit-font-smoothing: antialiased
-    background:white01
-    border:1px * scale solid white05
-    border-right:none
+    background: white01
+    border: 1px * scale solid white05
+    border-right: none
 
   .clock-bg-slice
     position: absolute
@@ -38,20 +38,19 @@ style: """
     -webkit-filter: blur(bg-blur)
 
   .box, .lastbox
-    width:80px * scale
-    display:inline-block
+    width: 80px * scale
+    height: 50px * scale
+    display: inline-block
     border-right:1px * scale solid white05
-
-  .Timezone
-    color: white05
-    padding:(6px * scale) (12px * scale)
-    padding-top:0px
 
   .Time
     color: white
     font-weight: 700
-    padding:(6px * scale) (12px * scale)
-    padding-bottom:0px
+    padding: 8px * scale
+    padding-bottom: 0
+
+  .Timezone
+    color: white05
 """
 
 
