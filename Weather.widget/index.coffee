@@ -12,8 +12,8 @@ style: """
   scale = 1
   bg-blur = 20px
 
-  bottom: 105pt * scale
-  left: 6pt * scale
+  bottom: 6pt * scale
+  left: 256pt * scale
   width: 80px * scale
   overflow: hidden
   white-space: nowrap
@@ -45,7 +45,7 @@ style: """
 
   .temp
     font-weight: 700
-    font-size: 24pt * scale
+    font-size: 13pt * scale
     line-height: @font-size
     margin-left: 6px * scale
 
